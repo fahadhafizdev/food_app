@@ -31,3 +31,12 @@ FontWeight regular = FontWeight.w400;
 FontWeight medium = FontWeight.w500;
 FontWeight semiBold = FontWeight.w600;
 FontWeight bold = FontWeight.w700;
+
+final ButtonStyle btnStyle1 = ElevatedButton.styleFrom(
+  primary: cYellow,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(30),
+    ),
+  ),
+);
