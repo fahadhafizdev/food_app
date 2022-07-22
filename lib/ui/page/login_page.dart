@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
           style: btnStyle1,
           onPressed: () {
             Navigator.pushNamedAndRemoveUntil(
-                context, '/home-page', (route) => false);
+                context, '/main-page', (route) => false);
           },
           child: Text(
             'Login',
@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
           style: btnStyle1,
           onPressed: () {
             Navigator.pushNamedAndRemoveUntil(
-                context, '/home-page', (route) => false);
+                context, '/main-page', (route) => false);
           },
           child: Text(
             'Create account',
