@@ -26,7 +26,7 @@ class MainPage extends StatelessWidget {
         child: BottomAppBar(
           shape: const CircularNotchedRectangle(),
           clipBehavior: Clip.antiAlias,
-          notchMargin: 12,
+          notchMargin: 10,
           child: BottomNavigationBar(
             currentIndex: 0, //index
             onTap: (value) {
