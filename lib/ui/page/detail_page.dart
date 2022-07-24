@@ -11,18 +11,24 @@ class DetailPage extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            height: 40,
-            width: 40,
-            margin: EdgeInsets.only(left: lebar * 0.04),
-            decoration: BoxDecoration(
-              color: cGrey2,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Center(
-              child: Image.asset(
-                'assets/icons/icon_arrow_back.png',
-                height: 16,
+          GestureDetector(
+            behavior: HitTestBehavior.translucent,
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              height: 40,
+              width: 40,
+              margin: EdgeInsets.only(left: lebar * 0.04),
+              decoration: BoxDecoration(
+                color: cGrey2,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Center(
+                child: Image.asset(
+                  'assets/icons/icon_arrow_back.png',
+                  height: 16,
+                ),
               ),
             ),
           ),
