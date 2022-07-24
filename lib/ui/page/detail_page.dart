@@ -163,6 +163,7 @@ class DetailPage extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: 24),
           Text(
             'Details',
             style: tWhite.copyWith(
@@ -173,14 +174,37 @@ class DetailPage extends StatelessWidget {
           const SizedBox(
             height: 12,
           ),
-          Text(
-            'The cheese is melted and just about completely forms a liquid with the tomato sauce at the time of serving. The taste is of bread, cheese and a tomato sauce made with ripes tomatoes. The main ingredients for the Pizza are basil, mozzarella cheese and red tomatoes.',
-            style: tGrey.copyWith(
-              fontSize: 16,
-              fontWeight: medium,
+          Padding(
+            padding: const EdgeInsets.only(right: 19),
+            child: Text(
+              'The cheese is melted and just about completely forms a liquid with the tomato sauce at the time of serving. The taste is of bread, cheese and a tomato sauce made with ripes tomatoes. The main ingredients for the Pizza are basil, mozzarella cheese and red tomatoes.',
+              style: tGrey.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
+              ),
             ),
           )
         ],
+      );
+    }
+
+    Widget btnAdd() {
+      return Center(
+        child: SizedBox(
+          height: 54,
+          width: 300,
+          child: ElevatedButton(
+            onPressed: () {},
+            style: btnStyle1,
+            child: Text(
+              'Add to cart',
+              style: tBlack.copyWith(
+                fontWeight: bold,
+                fontSize: 18,
+              ),
+            ),
+          ),
+        ),
       );
     }
 
@@ -229,6 +253,13 @@ class DetailPage extends StatelessWidget {
               ],
             ),
             detailFood(),
+            SizedBox(
+              height: 30,
+            ),
+            btnAdd(),
+            SizedBox(
+              height: 50,
+            ),
           ],
         ),
       );
@@ -236,16 +267,18 @@ class DetailPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: cBlack,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: tinggi * 0.09,
-          ),
-          topNavbar(),
-          SizedBox(height: 20),
-          content(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: tinggi * 0.09,
+            ),
+            topNavbar(),
+            SizedBox(height: 20),
+            content(),
+          ],
+        ),
       ),
     );
   }
