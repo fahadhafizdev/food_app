@@ -159,6 +159,31 @@ class DetailPage extends StatelessWidget {
       );
     }
 
+    Widget detailFood() {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Details',
+            style: tWhite.copyWith(
+              fontWeight: bold,
+              fontSize: 24,
+            ),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          Text(
+            'The cheese is melted and just about completely forms a liquid with the tomato sauce at the time of serving. The taste is of bread, cheese and a tomato sauce made with ripes tomatoes. The main ingredients for the Pizza are basil, mozzarella cheese and red tomatoes.',
+            style: tGrey.copyWith(
+              fontSize: 16,
+              fontWeight: medium,
+            ),
+          )
+        ],
+      );
+    }
+
     Widget content() {
       return Padding(
         padding: EdgeInsets.only(left: lebar * 0.04),
@@ -188,7 +213,7 @@ class DetailPage extends StatelessWidget {
             SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
+              children: const [
                 StatusFoodWidget(
                   image: 'assets/icons/icon_star.png',
                   text: '4.9',
@@ -203,6 +228,7 @@ class DetailPage extends StatelessWidget {
                 ),
               ],
             ),
+            detailFood(),
           ],
         ),
       );
