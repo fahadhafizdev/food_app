@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/shared/theme.dart';
 import 'package:food_app/ui/page/home/home_page.dart';
+import 'package:food_app/ui/widget/show_dialog_widget/dialog_coming_widget.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Future<void> showDialogComing() async {
+      return showDialog(
+        context: context,
+        builder: (BuildContext context) => DialogComingWidget(),
+      );
+    }
+
     Widget cardButton() {
       return FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showDialogComing();
+        },
         backgroundColor: cYellow,
         child: Image.asset(
           'assets/icons/icon_search.png',

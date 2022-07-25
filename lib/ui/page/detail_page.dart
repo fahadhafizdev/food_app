@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/shared/theme.dart';
+import 'package:food_app/ui/widget/show_dialog_widget/dialog_cart_widget.dart';
 import 'package:food_app/ui/widget/status_food_widget.dart';
 
 class DetailPage extends StatelessWidget {
@@ -7,6 +8,13 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> showDialogCart() async {
+      return showDialog(
+        context: context,
+        builder: (BuildContext context) => DialogCartWidget(),
+      );
+    }
+
     Widget topNavbar() {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -200,7 +208,9 @@ class DetailPage extends StatelessWidget {
           height: 54,
           width: 300,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              showDialogCart();
+            },
             style: btnStyle1,
             child: Text(
               'Add to cart',
