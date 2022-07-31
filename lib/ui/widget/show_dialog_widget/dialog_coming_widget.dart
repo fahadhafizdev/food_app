@@ -28,6 +28,7 @@ class DialogComingWidget extends StatelessWidget {
         ),
       );
     }
+    //note this
 
     return SizedBox(
       width: lebar - 40,
