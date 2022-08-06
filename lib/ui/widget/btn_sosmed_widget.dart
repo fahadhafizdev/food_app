@@ -18,6 +18,7 @@ class ButtonSosmed extends StatelessWidget {
             ),
             child: Center(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(
                     width: 18,
@@ -48,6 +49,7 @@ class ButtonSosmed extends StatelessWidget {
             ),
             child: Center(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(
                     width: 18,

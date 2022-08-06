@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:food_app/shared/theme.dart';
 import 'package:food_app/ui/page/detail_page.dart';
 
-class CardFoodWidget extends StatelessWidget {
+class CardFoodWebWidget extends StatelessWidget {
   final String image;
   final String name;
   final String desc;
 
-  const CardFoodWidget({
+  const CardFoodWebWidget({
     Key? key,
     required this.image,
     required this.name,
@@ -26,16 +26,15 @@ class CardFoodWidget extends StatelessWidget {
         );
       },
       child: Container(
-        height: 210,
-        width: 164,
+        width: lebar * 0.8,
         decoration: BoxDecoration(
           color: cWhite,
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(50),
         ),
-        margin: const EdgeInsets.only(right: 15),
+        margin: const EdgeInsets.only(bottom: 15),
         padding: const EdgeInsets.all(10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Image.asset(
               image,
