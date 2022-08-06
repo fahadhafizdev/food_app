@@ -32,7 +32,9 @@ class MainPage extends StatelessWidget {
           } else {
             return Column(
               children: [
-                const SizedBox(height: 40),
+                const SizedBox(
+                  height: 40,
+                ),
                 FloatingActionButton(
                   onPressed: () {
                     showDialogComing();
@@ -45,9 +47,7 @@ class MainPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 FloatingActionButton(
-                  onPressed: () {
-                    showDialogComing();
-                  },
+                  onPressed: () {},
                   backgroundColor: cBlackBold,
                   child: Image.asset(
                     'assets/icons/icon_home.png',
@@ -56,9 +56,7 @@ class MainPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 FloatingActionButton(
-                  onPressed: () {
-                    showDialogComing();
-                  },
+                  onPressed: () {},
                   backgroundColor: cBlackBold,
                   child: Image.asset(
                     'assets/icons/icon_disc.png',
@@ -67,9 +65,7 @@ class MainPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 FloatingActionButton(
-                  onPressed: () {
-                    showDialogComing();
-                  },
+                  onPressed: () {},
                   backgroundColor: cBlackBold,
                   child: Image.asset(
                     'assets/icons/icon_keranjang.png',
@@ -78,9 +74,7 @@ class MainPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 FloatingActionButton(
-                  onPressed: () {
-                    showDialogComing();
-                  },
+                  onPressed: () {},
                   backgroundColor: cBlackBold,
                   child: Image.asset(
                     'assets/icons/icon_user.png',

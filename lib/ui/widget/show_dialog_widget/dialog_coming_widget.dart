@@ -47,6 +47,7 @@ class DialogComingWidget extends StatelessWidget {
             ),
             Text(
               'Search is coming soon',
+              textAlign: TextAlign.center,
               style: tBlack.copyWith(
                 fontWeight: semiBold,
                 fontSize: 20,

@@ -3,6 +3,7 @@ import 'package:food_app/shared/theme.dart';
 import 'package:food_app/ui/widget/card_categories_widget.dart';
 import 'package:food_app/ui/widget/card_food_widget.dart';
 import 'package:food_app/ui/widget/web_widget/card_food_webw.dart';
+import 'package:lottie/lottie.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
