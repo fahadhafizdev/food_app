@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/cubit/size_food_cubit.dart';
 import 'package:food_app/shared/theme.dart';
 import 'package:food_app/ui/widget/show_dialog_widget/dialog_cart_widget.dart';
 import 'package:food_app/ui/widget/status_food_widget.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({Key? key}) : super(key: key);
+  final String name;
+  final String image;
+  const DetailPage({
+    Key? key,
+    required this.image,
+    required this.name,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Future<void> showDialogCart() async {
       return showDialog(
         context: context,
-        builder: (BuildContext context) => DialogCartWidget(),
+        builder: (BuildContext context) => const DialogCartWidget(),
       );
     }
 
@@ -61,249 +68,139 @@ class DetailPage extends StatelessWidget {
     }
 
     Widget sizeFood() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Size',
-            style: tGrey.copyWith(
-              fontWeight: semiBold,
-              fontSize: 16,
-            ),
-          ),
-          SizedBox(height: 16),
-          Container(
-            height: 32,
-            width: 32,
-            decoration: BoxDecoration(
-              color: cGrey2,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                'S',
-                style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
-              ),
-            ),
-          ),
-          SizedBox(height: 16),
-          Container(
-            height: 32,
-            width: 32,
-            decoration: BoxDecoration(
-              color: cGrey2,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                'M',
-                style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
-              ),
-            ),
-          ),
-          SizedBox(height: 16),
-          Container(
-            height: 32,
-            width: 32,
-            decoration: BoxDecoration(
-              color: cGrey2,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                'L',
-                style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
-              ),
-            ),
-          ),
-          SizedBox(height: 18),
-          Text(
-            'Quantity',
-            style: tGrey.copyWith(
-              fontWeight: semiBold,
-              fontSize: 16,
-            ),
-          ),
-          SizedBox(height: 10),
-          Row(
+      return BlocBuilder<SizeFoodCubit, String>(
+        builder: (context, state) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: 32,
-                width: 32,
-                decoration: BoxDecoration(
-                  color: cGrey2,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: Text(
-                    '-',
-                    style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 8,
-              ),
               Text(
-                '2',
-                style: tWhite.copyWith(
-                  fontWeight: bold,
+                'Size',
+                style: tGrey.copyWith(
+                  fontWeight: semiBold,
                   fontSize: 16,
                 ),
               ),
-              SizedBox(
-                width: 8,
-              ),
-              Container(
-                height: 32,
-                width: 32,
-                decoration: BoxDecoration(
-                  color: cYellow,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Center(
-                  child: Text(
-                    '+',
-                    style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+              const SizedBox(height: 16),
+              GestureDetector(
+                onTap: () {
+                  context.read<SizeFoodCubit>().chageSize('S');
+                },
+                child: Container(
+                  height: 32,
+                  width: 32,
+                  decoration: BoxDecoration(
+                    color: (state == 'S') ? cYellow : cGrey2,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'S',
+                      style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+                    ),
                   ),
                 ),
               ),
+              const SizedBox(height: 16),
+              GestureDetector(
+                onTap: () {
+                  context.read<SizeFoodCubit>().chageSize('M');
+                },
+                child: Container(
+                  height: 32,
+                  width: 32,
+                  decoration: BoxDecoration(
+                    color: (state == 'M') ? cYellow : cGrey2,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'M',
+                      style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              GestureDetector(
+                onTap: () {
+                  context.read<SizeFoodCubit>().chageSize('L');
+                },
+                child: Container(
+                  height: 32,
+                  width: 32,
+                  decoration: BoxDecoration(
+                    color: (state == 'L') ? cYellow : cGrey2,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'L',
+                      style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 18),
+              Text(
+                'Quantity',
+                style: tGrey.copyWith(
+                  fontWeight: semiBold,
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Container(
+                    height: 32,
+                    width: 32,
+                    decoration: BoxDecoration(
+                      color: cGrey2,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '-',
+                        style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Text(
+                    '2',
+                    style: tWhite.copyWith(
+                      fontWeight: bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 8,
+                  ),
+                  Container(
+                    height: 32,
+                    width: 32,
+                    decoration: BoxDecoration(
+                      color: cYellow,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '+',
+                        style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
-          ),
-        ],
-      );
-    }
-
-    Widget sizeFoodWeb() {
-      return Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 32,
-            width: 32,
-            decoration: BoxDecoration(
-              color: cGrey2,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                'S',
-                style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
-              ),
-            ),
-          ),
-          SizedBox(width: 16),
-          Container(
-            height: 32,
-            width: 32,
-            decoration: BoxDecoration(
-              color: cGrey2,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                'M',
-                style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
-              ),
-            ),
-          ),
-          SizedBox(width: 16),
-          Container(
-            height: 32,
-            width: 32,
-            decoration: BoxDecoration(
-              color: cGrey2,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                'L',
-                style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
-              ),
-            ),
-          ),
-        ],
-      );
-    }
-
-    Widget sizeCountWeb() {
-      return Row(
-        children: [
-          Container(
-            height: 32,
-            width: 32,
-            decoration: BoxDecoration(
-              color: cGrey2,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                '-',
-                style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
-              ),
-            ),
-          ),
-          SizedBox(
-            width: 8,
-          ),
-          Text(
-            '2',
-            style: tWhite.copyWith(
-              fontWeight: bold,
-              fontSize: 16,
-            ),
-          ),
-          SizedBox(
-            width: 8,
-          ),
-          Container(
-            height: 32,
-            width: 32,
-            decoration: BoxDecoration(
-              color: cYellow,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                '+',
-                style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
-              ),
-            ),
-          ),
-        ],
+          );
+        },
       );
     }
 
     Widget detailFood() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 24),
-          Text(
-            'Details',
-            style: tWhite.copyWith(
-              fontWeight: bold,
-              fontSize: 24,
-            ),
-          ),
-          const SizedBox(
-            height: 12,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 19),
-            child: Text(
-              'The cheese is melted and just about completely forms a liquid with the tomato sauce at the time of serving. The taste is of bread, cheese and a tomato sauce made with ripes tomatoes. The main ingredients for the Pizza are basil, mozzarella cheese and red tomatoes.',
-              style: tGrey.copyWith(
-                fontSize: 16,
-                fontWeight: medium,
-              ),
-            ),
-          )
-        ],
-      );
-    }
-
-    Widget detailFoodWeb() {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -354,6 +251,154 @@ class DetailPage extends StatelessWidget {
       );
     }
 
+    Widget sizeFoodWeb() {
+      return BlocBuilder<SizeFoodCubit, String>(
+        builder: (context, state) {
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  context.read<SizeFoodCubit>().chageSize('S');
+                },
+                child: Container(
+                  height: 32,
+                  width: 32,
+                  decoration: BoxDecoration(
+                    color: state == 'S' ? cYellow : cGrey2,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'S',
+                      style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 16),
+              GestureDetector(
+                onTap: () {
+                  context.read<SizeFoodCubit>().chageSize('M');
+                },
+                child: Container(
+                  height: 32,
+                  width: 32,
+                  decoration: BoxDecoration(
+                    color: state == 'M' ? cYellow : cGrey2,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'M',
+                      style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 16),
+              GestureDetector(
+                onTap: () {
+                  context.read<SizeFoodCubit>().chageSize('L');
+                },
+                child: Container(
+                  height: 32,
+                  width: 32,
+                  decoration: BoxDecoration(
+                    color: state == 'L' ? cYellow : cGrey2,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'L',
+                      style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+    Widget sizeCountWeb() {
+      return Row(
+        children: [
+          Container(
+            height: 32,
+            width: 32,
+            decoration: BoxDecoration(
+              color: cGrey2,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Center(
+              child: Text(
+                '-',
+                style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 8,
+          ),
+          Text(
+            '2',
+            style: tWhite.copyWith(
+              fontWeight: bold,
+              fontSize: 16,
+            ),
+          ),
+          const SizedBox(
+            width: 8,
+          ),
+          Container(
+            height: 32,
+            width: 32,
+            decoration: BoxDecoration(
+              color: cYellow,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Center(
+              child: Text(
+                '+',
+                style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+
+    Widget detailFoodWeb() {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 24),
+          Text(
+            'Details',
+            style: tWhite.copyWith(
+              fontWeight: bold,
+              fontSize: 24,
+            ),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 19),
+            child: Text(
+              'The cheese is melted and just about completely forms a liquid with the tomato sauce at the time of serving. The taste is of bread, cheese and a tomato sauce made with ripes tomatoes. The main ingredients for the Pizza are basil, mozzarella cheese and red tomatoes.',
+              style: tGrey.copyWith(
+                fontSize: 16,
+                fontWeight: medium,
+              ),
+            ),
+          )
+        ],
+      );
+    }
+
     Widget content() {
       return LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth <= 700) {
@@ -363,10 +408,10 @@ class DetailPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Margherita Pizza',
+                  name,
                   style: tWhite.copyWith(fontWeight: semiBold, fontSize: 40),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Stack(
                   children: [
                     sizeFood(),
@@ -377,14 +422,14 @@ class DetailPage extends StatelessWidget {
                         width: 253,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/images/pizza1.png'),
+                            image: AssetImage(image),
                           ),
                         ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: const [
@@ -419,7 +464,7 @@ class DetailPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -428,7 +473,7 @@ class DetailPage extends StatelessWidget {
                       width: 353,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/images/pizza1.png'),
+                          image: AssetImage(image),
                         ),
                       ),
                     ),
@@ -438,7 +483,7 @@ class DetailPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Margherita Pizza',
+                            name,
                             style: tWhite.copyWith(
                                 fontWeight: semiBold, fontSize: 40),
                           ),
@@ -497,12 +542,12 @@ class DetailPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
-                SizedBox(
+                const SizedBox(height: 30),
+                const SizedBox(
                   height: 30,
                 ),
                 btnAdd(),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
               ],
