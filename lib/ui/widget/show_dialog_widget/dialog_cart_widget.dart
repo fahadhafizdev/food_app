@@ -38,33 +38,42 @@ class DialogCartWidget extends StatelessWidget {
       );
     }
 
-    return SizedBox(
-      width: lebar - 40,
-      child: AlertDialog(
-        backgroundColor: cWhite,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(21),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            LottieBuilder.asset(
-              'assets/lottie/78267-food-choice.json',
-              height: 250,
-              width: 250,
-            ),
-            Text(
-              'Make sure your order',
-              style: tBlack.copyWith(
-                fontWeight: semiBold,
-                fontSize: 20,
-              ),
-            ),
-            const SizedBox(height: 12),
-            btnClose(),
-          ],
-        ),
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return AlertDialog(
+          backgroundColor: cWhite,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(21),
+          ),
+          content: Builder(
+            builder: (context) {
+              return SizedBox(
+                width: (constraints.maxWidth <= 600) ? lebar : 250,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    LottieBuilder.asset(
+                      'assets/lottie/78267-food-choice.json',
+                      height: 200,
+                      width: 200,
+                    ),
+                    Text(
+                      'Make sure your order',
+                      textAlign: TextAlign.center,
+                      style: tBlack.copyWith(
+                        fontWeight: semiBold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    btnClose(),
+                  ],
+                ),
+              );
+            },
+          ),
+        );
+      },
     );
   }
 }

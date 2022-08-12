@@ -29,34 +29,41 @@ class DialogSuccessWidget extends StatelessWidget {
       );
     }
 
-    return SizedBox(
-      width: lebar - 40,
-      child: AlertDialog(
-        backgroundColor: cWhite,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(21),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            LottieBuilder.asset(
-              'assets/lottie/104556-success.json',
-              repeat: false,
-              height: 250,
-              width: 250,
-            ),
-            Text(
-              'Success order',
-              style: tBlack.copyWith(
-                fontWeight: semiBold,
-                fontSize: 20,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return AlertDialog(
+          backgroundColor: cWhite,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(21),
+          ),
+          content: Builder(builder: (context) {
+            return SizedBox(
+              width: (constraints.maxWidth <= 600) ? lebar : 250,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  LottieBuilder.asset(
+                    'assets/lottie/104556-success.json',
+                    repeat: false,
+                    height: 200,
+                    width: 200,
+                  ),
+                  Text(
+                    'Success order',
+                    textAlign: TextAlign.center,
+                    style: tBlack.copyWith(
+                      fontWeight: semiBold,
+                      fontSize: 20,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  btnClose(),
+                ],
               ),
-            ),
-            const SizedBox(height: 12),
-            btnClose(),
-          ],
-        ),
-      ),
+            );
+          }),
+        );
+      },
     );
   }
 }

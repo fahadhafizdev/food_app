@@ -28,7 +28,6 @@ class DialogComingWidget extends StatelessWidget {
         ),
       );
     }
-    //note this
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -39,7 +38,6 @@ class DialogComingWidget extends StatelessWidget {
           ),
           content: Builder(builder: (context) {
             return SizedBox(
-              // height: tinggi - 100,
               width: (constraints.maxWidth <= 600) ? lebar : 250,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
