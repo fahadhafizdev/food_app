@@ -26,12 +26,16 @@ class CardFoodWebWidget extends StatelessWidget {
         );
       },
       child: Container(
-        width: lebar * 0.8,
+        width: lebar,
         decoration: BoxDecoration(
           color: cWhite,
           borderRadius: BorderRadius.circular(50),
         ),
-        margin: const EdgeInsets.only(bottom: 15),
+        margin: EdgeInsets.only(
+          bottom: 15,
+          right: lebar * 0.05,
+          left: lebar * 0.05,
+        ),
         padding: const EdgeInsets.all(10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
