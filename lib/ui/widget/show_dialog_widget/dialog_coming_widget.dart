@@ -30,34 +30,41 @@ class DialogComingWidget extends StatelessWidget {
     }
     //note this
 
-    return SizedBox(
-      width: lebar - 40,
-      child: AlertDialog(
-        backgroundColor: cWhite,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(21),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            LottieBuilder.asset(
-              'assets/lottie/90593-random-ask-questions.json',
-              height: 250,
-              width: 250,
-            ),
-            Text(
-              'Search is coming soon',
-              textAlign: TextAlign.center,
-              style: tBlack.copyWith(
-                fontWeight: semiBold,
-                fontSize: 20,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return AlertDialog(
+          backgroundColor: cWhite,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(21),
+          ),
+          content: Builder(builder: (context) {
+            return SizedBox(
+              // height: tinggi - 100,
+              width: (constraints.maxWidth <= 600) ? lebar : 250,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  LottieBuilder.asset(
+                    'assets/lottie/90593-random-ask-questions.json',
+                    height: 200,
+                    width: 200,
+                  ),
+                  Text(
+                    'Search is coming soon',
+                    textAlign: TextAlign.center,
+                    style: tBlack.copyWith(
+                      fontWeight: semiBold,
+                      fontSize: 20,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  btnClose(),
+                ],
               ),
-            ),
-            const SizedBox(height: 12),
-            btnClose(),
-          ],
-        ),
-      ),
+            );
+          }),
+        );
+      },
     );
   }
 }
