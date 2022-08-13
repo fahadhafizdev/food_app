@@ -4,6 +4,7 @@ import 'package:food_app/cubit/count_food_cubit.dart';
 import 'package:food_app/cubit/list_category_cubit.dart';
 import 'package:food_app/cubit/list_item_cubit.dart';
 import 'package:food_app/cubit/love_cubit.dart';
+import 'package:food_app/cubit/page_cubit.dart';
 import 'package:food_app/cubit/size_food_cubit.dart';
 import 'package:food_app/ui/page/home/home_page.dart';
 import 'package:food_app/ui/page/home/main_page.dart';
@@ -40,6 +41,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ListCategoryCubit(),
+        ),
+        BlocProvider(
+          create: (context) => PageCubit(),
         )
       ],
       child: MaterialApp(
