@@ -3,17 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/cubit/count_food_cubit.dart';
 import 'package:food_app/cubit/love_cubit.dart';
 import 'package:food_app/cubit/size_food_cubit.dart';
+import 'package:food_app/models/food_model.dart';
 import 'package:food_app/shared/theme.dart';
 import 'package:food_app/ui/widget/show_dialog_widget/dialog_cart_widget.dart';
 import 'package:food_app/ui/widget/status_food_widget.dart';
 
 class DetailPage extends StatelessWidget {
-  final String name;
-  final String image;
+  final FoodModel foodModel;
   const DetailPage({
     Key? key,
-    required this.image,
-    required this.name,
+    required this.foodModel,
   }) : super(key: key);
 
   @override
@@ -248,7 +247,7 @@ class DetailPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 19),
             child: Text(
-              'The cheese is melted and just about completely forms a liquid with the tomato sauce at the time of serving. The taste is of bread, cheese and a tomato sauce made with ripes tomatoes. The main ingredients for the Pizza are basil, mozzarella cheese and red tomatoes.',
+              foodModel.desc,
               style: tGrey.copyWith(
                 fontSize: 16,
                 fontWeight: medium,
@@ -433,7 +432,7 @@ class DetailPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 19),
             child: Text(
-              'The cheese is melted and just about completely forms a liquid with the tomato sauce at the time of serving. The taste is of bread, cheese and a tomato sauce made with ripes tomatoes. The main ingredients for the Pizza are basil, mozzarella cheese and red tomatoes.',
+              foodModel.desc,
               style: tGrey.copyWith(
                 fontSize: 16,
                 fontWeight: medium,
@@ -453,7 +452,7 @@ class DetailPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  name,
+                  foodModel.name,
                   style: tWhite.copyWith(fontWeight: semiBold, fontSize: 40),
                 ),
                 const SizedBox(height: 30),
@@ -467,7 +466,7 @@ class DetailPage extends StatelessWidget {
                         width: 253,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage(image),
+                            image: AssetImage(foodModel.image),
                           ),
                         ),
                       ),
@@ -477,18 +476,18 @@ class DetailPage extends StatelessWidget {
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
+                  children: [
                     StatusFoodWidget(
                       image: 'assets/icons/icon_star.png',
-                      text: '4.9',
+                      text: foodModel.rating.toString(),
                     ),
                     StatusFoodWidget(
                       image: 'assets/icons/icon_fire.png',
-                      text: '145 cal',
+                      text: '${foodModel.cal} cal',
                     ),
                     StatusFoodWidget(
                       image: 'assets/icons/icon_time.png',
-                      text: '30 min',
+                      text: '${foodModel.time} min',
                     ),
                   ],
                 ),
@@ -518,7 +517,7 @@ class DetailPage extends StatelessWidget {
                       width: 353,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(image),
+                          image: AssetImage(foodModel.image),
                         ),
                       ),
                     ),
@@ -528,7 +527,7 @@ class DetailPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            name,
+                            foodModel.name,
                             style: tWhite.copyWith(
                                 fontWeight: semiBold, fontSize: 40),
                           ),
@@ -560,18 +559,18 @@ class DetailPage extends StatelessWidget {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: const [
+                            children: [
                               StatusFoodWidget(
                                 image: 'assets/icons/icon_star.png',
-                                text: '4.9',
+                                text: foodModel.rating.toString(),
                               ),
                               StatusFoodWidget(
                                 image: 'assets/icons/icon_fire.png',
-                                text: '145 cal',
+                                text: '${foodModel.cal} cal',
                               ),
                               StatusFoodWidget(
                                 image: 'assets/icons/icon_time.png',
-                                text: '30 min',
+                                text: '${foodModel.time} min',
                               ),
                             ],
                           ),

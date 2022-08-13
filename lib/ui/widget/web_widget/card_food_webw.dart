@@ -23,8 +23,7 @@ class CardFoodWebWidget extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => DetailPage(
-              image: foodModel.image,
-              name: foodModel.name,
+              foodModel: foodModel,
             ),
           ),
         ).then((value) {
