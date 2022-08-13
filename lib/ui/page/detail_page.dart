@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/cubit/count_food_cubit.dart';
+import 'package:food_app/cubit/love_cubit.dart';
 import 'package:food_app/cubit/size_food_cubit.dart';
 import 'package:food_app/shared/theme.dart';
 import 'package:food_app/ui/widget/show_dialog_widget/dialog_cart_widget.dart';
@@ -49,25 +50,37 @@ class DetailPage extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            height: 40,
-            width: 40,
-            margin: EdgeInsets.only(right: lebar * 0.04),
-            decoration: BoxDecoration(
-              color: cYellow,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Center(
-              child: Image.asset(
-                'assets/icons/icon_love.png',
-                height: 20,
-              ),
-            ),
+          BlocBuilder<LoveCubit, int>(
+            builder: (context, state) {
+              return GestureDetector(
+                onTap: () {
+                  context.read<LoveCubit>().setChangeLove();
+                },
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  margin: EdgeInsets.only(right: lebar * 0.04),
+                  decoration: BoxDecoration(
+                    color: cYellow,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Center(
+                    child: Image.asset(
+                      state == 0
+                          ? 'assets/icons/icon_love.png'
+                          : 'assets/icons/icon_love_active.png',
+                      height: 20,
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
         ],
       );
     }
 
+    //NOTE : Widget Mobile
     Widget sizeFood() {
       return BlocBuilder<SizeFoodCubit, String>(
         builder: (context, state) {
@@ -268,6 +281,7 @@ class DetailPage extends StatelessWidget {
       );
     }
 
+    //NOTE : Widget Web
     Widget sizeFoodWeb() {
       return BlocBuilder<SizeFoodCubit, String>(
         builder: (context, state) {

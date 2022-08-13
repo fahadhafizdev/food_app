@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/cubit/list_item_cubit.dart';
 import 'package:food_app/shared/theme.dart';
 
 class SplashScreenPage extends StatefulWidget {
@@ -14,6 +16,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void initState() {
     Timer(const Duration(seconds: 2), () {
+      context.read<ListItemCubit>().setList();
       Navigator.pushNamedAndRemoveUntil(
           context, '/login-page', (route) => false);
     });
@@ -24,6 +27,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   Widget build(BuildContext context) {
     tinggi = MediaQuery.of(context).size.height;
     lebar = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: cBlack,
       body: Center(

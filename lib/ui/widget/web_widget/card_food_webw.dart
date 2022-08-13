@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/cubit/count_food_cubit.dart';
+import 'package:food_app/cubit/love_cubit.dart';
 import 'package:food_app/cubit/size_food_cubit.dart';
+import 'package:food_app/models/food_model.dart';
 import 'package:food_app/shared/theme.dart';
 import 'package:food_app/ui/page/detail_page.dart';
 
 class CardFoodWebWidget extends StatelessWidget {
-  final String image;
-  final String name;
-  final String desc;
+  final FoodModel foodModel;
 
   const CardFoodWebWidget({
     Key? key,
-    required this.image,
-    required this.name,
-    required this.desc,
+    required this.foodModel,
   }) : super(key: key);
 
   @override
@@ -25,13 +23,14 @@ class CardFoodWebWidget extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => DetailPage(
-              image: image,
-              name: name,
+              image: foodModel.image,
+              name: foodModel.name,
             ),
           ),
         ).then((value) {
           context.read<SizeFoodCubit>().chageSize('');
           context.read<CountFoodCubit>().refreshCount();
+          context.read<LoveCubit>().regreshLove();
         });
       },
       child: Container(
@@ -50,13 +49,13 @@ class CardFoodWebWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Image.asset(
-              image,
+              foodModel.image,
               height: 95,
               width: 95,
             ),
             const SizedBox(height: 10),
             Text(
-              name,
+              foodModel.name,
               style: tBlack.copyWith(
                 fontWeight: semiBold,
                 fontSize: 18,
@@ -66,7 +65,7 @@ class CardFoodWebWidget extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             Text(
-              '$desc🔥',
+              '${foodModel.include}🔥',
               style: tGrey.copyWith(
                 fontWeight: medium,
                 fontSize: 16,

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/cubit/list_item_cubit.dart';
+import 'package:food_app/models/food_model.dart';
 import 'package:food_app/shared/theme.dart';
 import 'package:food_app/ui/widget/card_categories_widget.dart';
 import 'package:food_app/ui/widget/card_food_widget.dart';
@@ -163,33 +166,19 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: const [
-                      SizedBox(width: 22),
-                      CardFoodWidget(
-                        name: 'Pizza Marg',
-                        image: 'assets/images/pizza1.png',
-                        desc: 'Cheesy pizza',
+                BlocBuilder<ListItemCubit, List<FoodModel>>(
+                  builder: (context, state) {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          const SizedBox(width: 22),
+                          ...state
+                              .map((data) => CardFoodWidget(foodModel: data)),
+                        ],
                       ),
-                      CardFoodWidget(
-                        name: 'Hamburger',
-                        image: 'assets/images/burger1.png',
-                        desc: 'Double paty',
-                      ),
-                      CardFoodWidget(
-                        name: 'French Fries',
-                        image: 'assets/images/kentang1.png',
-                        desc: 'French fries',
-                      ),
-                      CardFoodWidget(
-                        name: 'Hamburger',
-                        image: 'assets/images/burger2.png',
-                        desc: 'Burger cheese',
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ],
             )
@@ -210,29 +199,15 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Column(
-                  children: const [
-                    CardFoodWebWidget(
-                      name: 'Pizza Marg',
-                      image: 'assets/images/pizza1.png',
-                      desc: 'Cheesy pizza',
-                    ),
-                    CardFoodWebWidget(
-                      name: 'Hamburger',
-                      image: 'assets/images/burger1.png',
-                      desc: 'Double paty',
-                    ),
-                    CardFoodWebWidget(
-                      name: 'French Fries',
-                      image: 'assets/images/kentang1.png',
-                      desc: 'French fries',
-                    ),
-                    CardFoodWebWidget(
-                      name: 'Hamburger',
-                      image: 'assets/images/burger2.png',
-                      desc: 'Burger cheese',
-                    ),
-                  ],
+                BlocBuilder<ListItemCubit, List<FoodModel>>(
+                  builder: (context, state) {
+                    return Column(
+                      children: [
+                        ...state
+                            .map((data) => CardFoodWebWidget(foodModel: data)),
+                      ],
+                    );
+                  },
                 ),
               ],
             );
