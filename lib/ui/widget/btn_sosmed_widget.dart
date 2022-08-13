@@ -11,7 +11,7 @@ class ButtonSosmed extends StatelessWidget {
         Expanded(
           child: Container(
             height: 42,
-            margin: const EdgeInsets.only(left: 16, right: 6),
+            margin: EdgeInsets.only(left: lebar * 0.05, right: 6),
             decoration: BoxDecoration(
               color: cGrey2,
               borderRadius: BorderRadius.circular(30),
@@ -42,7 +42,7 @@ class ButtonSosmed extends StatelessWidget {
         Expanded(
           child: Container(
             height: 42,
-            margin: const EdgeInsets.only(left: 6, right: 16),
+            margin: EdgeInsets.only(left: 6, right: lebar * 0.05),
             decoration: BoxDecoration(
               color: cGrey2,
               borderRadius: BorderRadius.circular(30),

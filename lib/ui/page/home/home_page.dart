@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/cubit/list_category_cubit.dart';
 import 'package:food_app/cubit/list_item_cubit.dart';
+import 'package:food_app/models/category_model.dart';
 import 'package:food_app/models/food_model.dart';
 import 'package:food_app/shared/theme.dart';
 import 'package:food_app/ui/widget/card_categories_widget.dart';
@@ -89,61 +91,45 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: const [
-                      SizedBox(width: 22),
-                      CardCategoriesWidget(
-                        name: 'Pizza',
-                        image: 'assets/icons/icon_pizza.png',
+                BlocBuilder<ListCategoryCubit, List<CategoryModel>>(
+                  builder: (context, state) {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          SizedBox(width: 22),
+                          ...state.map(
+                            (e) => CardCategoriesWidget(
+                                image: e.image, name: e.name),
+                          )
+                        ],
                       ),
-                      CardCategoriesWidget(
-                        name: 'Burger',
-                        image: 'assets/icons/icon_burger.png',
-                      ),
-                      CardCategoriesWidget(
-                        name: 'Popcorn',
-                        image: 'assets/icons/icon_pop_corn.png',
-                      ),
-                      CardCategoriesWidget(
-                        name: 'Drink',
-                        image: 'assets/icons/icon_drink.png',
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ],
             )
-          : Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: const [
-                      SizedBox(width: 22),
-                      CardCategoriesWidget(
-                        name: 'Pizza',
-                        image: 'assets/icons/icon_pizza.png',
+          : BlocBuilder<ListCategoryCubit, List<CategoryModel>>(
+              builder: (context, state) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          SizedBox(width: 22),
+                          ...state.map(
+                            (e) => CardCategoriesWidget(
+                                image: e.image, name: e.name),
+                          ),
+                        ],
                       ),
-                      CardCategoriesWidget(
-                        name: 'Burger',
-                        image: 'assets/icons/icon_burger.png',
-                      ),
-                      CardCategoriesWidget(
-                        name: 'Popcorn',
-                        image: 'assets/icons/icon_pop_corn.png',
-                      ),
-                      CardCategoriesWidget(
-                        name: 'Drink',
-                        image: 'assets/icons/icon_drink.png',
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                    ),
+                  ],
+                );
+              },
             );
     }
 

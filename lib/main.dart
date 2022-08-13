@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/cubit/categories_cubit.dart';
 import 'package:food_app/cubit/count_food_cubit.dart';
+import 'package:food_app/cubit/list_category_cubit.dart';
 import 'package:food_app/cubit/list_item_cubit.dart';
 import 'package:food_app/cubit/love_cubit.dart';
 import 'package:food_app/cubit/size_food_cubit.dart';
@@ -36,6 +37,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ListItemCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ListCategoryCubit(),
         )
       ],
       child: MaterialApp(
