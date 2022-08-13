@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/cubit/count_food_cubit.dart';
 import 'package:food_app/cubit/size_food_cubit.dart';
 import 'package:food_app/shared/theme.dart';
 import 'package:food_app/ui/widget/show_dialog_widget/dialog_cart_widget.dart';
@@ -149,50 +150,66 @@ class DetailPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              Row(
-                children: [
-                  Container(
-                    height: 32,
-                    width: 32,
-                    decoration: BoxDecoration(
-                      color: cGrey2,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text(
-                        '-',
-                        style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+              BlocBuilder<CountFoodCubit, int>(
+                builder: (context, state) {
+                  return Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          context.read<CountFoodCubit>().minCount();
+                        },
+                        child: Container(
+                          height: 32,
+                          width: 32,
+                          decoration: BoxDecoration(
+                            color: cGrey2,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '-',
+                              style: tBlack.copyWith(
+                                  fontWeight: bold, fontSize: 16),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    '2',
-                    style: tWhite.copyWith(
-                      fontWeight: bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  Container(
-                    height: 32,
-                    width: 32,
-                    decoration: BoxDecoration(
-                      color: cYellow,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text(
-                        '+',
-                        style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+                      const SizedBox(
+                        width: 8,
                       ),
-                    ),
-                  ),
-                ],
+                      Text(
+                        state.toString(),
+                        style: tWhite.copyWith(
+                          fontWeight: bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          context.read<CountFoodCubit>().changeCount();
+                        },
+                        child: Container(
+                          height: 32,
+                          width: 32,
+                          decoration: BoxDecoration(
+                            color: cYellow,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '+',
+                              style: tBlack.copyWith(
+                                  fontWeight: bold, fontSize: 16),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ],
           );
@@ -323,50 +340,64 @@ class DetailPage extends StatelessWidget {
     }
 
     Widget sizeCountWeb() {
-      return Row(
-        children: [
-          Container(
-            height: 32,
-            width: 32,
-            decoration: BoxDecoration(
-              color: cGrey2,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                '-',
-                style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+      return BlocBuilder<CountFoodCubit, int>(
+        builder: (context, state) {
+          return Row(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  context.read<CountFoodCubit>().minCount();
+                },
+                child: Container(
+                  height: 32,
+                  width: 32,
+                  decoration: BoxDecoration(
+                    color: cGrey2,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '-',
+                      style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ),
-          const SizedBox(
-            width: 8,
-          ),
-          Text(
-            '2',
-            style: tWhite.copyWith(
-              fontWeight: bold,
-              fontSize: 16,
-            ),
-          ),
-          const SizedBox(
-            width: 8,
-          ),
-          Container(
-            height: 32,
-            width: 32,
-            decoration: BoxDecoration(
-              color: cYellow,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Center(
-              child: Text(
-                '+',
-                style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+              const SizedBox(
+                width: 8,
               ),
-            ),
-          ),
-        ],
+              Text(
+                state.toString(),
+                style: tWhite.copyWith(
+                  fontWeight: bold,
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(
+                width: 8,
+              ),
+              GestureDetector(
+                onTap: () {
+                  context.read<CountFoodCubit>().changeCount();
+                },
+                child: Container(
+                  height: 32,
+                  width: 32,
+                  decoration: BoxDecoration(
+                    color: cYellow,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '+',
+                      style: tBlack.copyWith(fontWeight: bold, fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
       );
     }
 

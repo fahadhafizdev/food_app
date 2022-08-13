@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_app/cubit/count_food_cubit.dart';
 import 'package:food_app/cubit/size_food_cubit.dart';
 import 'package:food_app/shared/theme.dart';
 import 'package:food_app/ui/page/detail_page.dart';
@@ -30,6 +31,7 @@ class CardFoodWebWidget extends StatelessWidget {
           ),
         ).then((value) {
           context.read<SizeFoodCubit>().chageSize('');
+          context.read<CountFoodCubit>().refreshCount();
         });
       },
       child: Container(
