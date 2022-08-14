@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_app/cubit/page_cubit.dart';
 import 'package:food_app/shared/theme.dart';
+import 'package:food_app/ui/page/home/basket_page.dart';
 import 'package:food_app/ui/page/home/home_page.dart';
+import 'package:food_app/ui/page/home/profile_page.dart';
+import 'package:food_app/ui/page/home/voucher_page.dart';
 import 'package:food_app/ui/widget/show_dialog_widget/dialog_coming_widget.dart';
 
 class MainPage extends StatelessWidget {
@@ -184,7 +187,12 @@ class MainPage extends StatelessWidget {
       switch (value) {
         case 0:
           return HomePage();
-
+        case 1:
+          return VoucherPage();
+        case 2:
+          return BasketPage();
+        case 3:
+          return ProfilePage();
         default:
           return HomePage();
       }
