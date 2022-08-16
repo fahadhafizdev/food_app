@@ -97,7 +97,7 @@ class HomePage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          SizedBox(width: 22),
+                          const SizedBox(width: 22),
                           ...state.map(
                             (e) => CardCategoriesWidget(
                                 image: e.image, name: e.name),
@@ -119,7 +119,7 @@ class HomePage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          SizedBox(width: 22),
+                          const SizedBox(width: 22),
                           ...state.map(
                             (e) => CardCategoriesWidget(
                                 image: e.image, name: e.name),
