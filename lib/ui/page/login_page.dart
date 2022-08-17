@@ -282,143 +282,145 @@ class _LoginPageState extends State<LoginPage> {
           color: cWhite,
           borderRadius: BorderRadius.circular(30),
         ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isLogin = false;
-                      });
-                    },
-                    child: Container(
-                      height: 53,
-                      decoration: BoxDecoration(
-                        color: isLogin ? cWhite : cOrange,
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(30),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isLogin = false;
+                        });
+                      },
+                      child: Container(
+                        height: 53,
+                        decoration: BoxDecoration(
+                          color: isLogin ? cWhite : cOrange,
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                          ),
                         ),
+                        child: Center(
+                          child: Text(
+                            'Sign up',
+                            style: tBlack.copyWith(
+                              fontWeight: bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isLogin = true;
+                        });
+                      },
+                      child: Container(
+                        height: 53,
+                        decoration: BoxDecoration(
+                          color: isLogin ? cOrange : cWhite,
+                          borderRadius: const BorderRadius.only(
+                            topRight: Radius.circular(30),
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Sign in',
+                            style: tBlack.copyWith(
+                              fontWeight: bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 27),
+              const ButtonSosmed(),
+              isLogin
+                  ? const SizedBox.shrink()
+                  : Container(
+                      height: 42,
+                      width: lebar,
+                      margin: EdgeInsets.fromLTRB(
+                        lebar * 0.05,
+                        lebar * 0.05,
+                        lebar * 0.05,
+                        0,
+                      ),
+                      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      decoration: BoxDecoration(
+                        color: cGrey2,
+                        borderRadius: BorderRadius.circular(30),
                       ),
                       child: Center(
-                        child: Text(
-                          'Sign up',
-                          style: tBlack.copyWith(
-                            fontWeight: bold,
-                            fontSize: 16,
+                        child: TextFormField(
+                          decoration: InputDecoration.collapsed(
+                            hintText: 'Name',
+                            hintStyle: tGrey.copyWith(
+                              fontWeight: regular,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
+              Container(
+                height: 42,
+                width: lebar,
+                margin: EdgeInsets.symmetric(
+                  horizontal: lebar * 0.05,
+                  vertical: lebar * 0.05,
                 ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isLogin = true;
-                      });
-                    },
-                    child: Container(
-                      height: 53,
-                      decoration: BoxDecoration(
-                        color: isLogin ? cOrange : cWhite,
-                        borderRadius: const BorderRadius.only(
-                          topRight: Radius.circular(30),
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Sign in',
-                          style: tBlack.copyWith(
-                            fontWeight: bold,
-                            fontSize: 16,
-                          ),
-                        ),
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                decoration: BoxDecoration(
+                  color: cGrey2,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Center(
+                  child: TextFormField(
+                    decoration: InputDecoration.collapsed(
+                      hintText: 'Email adress',
+                      hintStyle: tGrey.copyWith(
+                        fontWeight: regular,
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(height: 27),
-            const ButtonSosmed(),
-            isLogin
-                ? const SizedBox.shrink()
-                : Container(
-                    height: 42,
-                    width: lebar,
-                    margin: EdgeInsets.fromLTRB(
-                      lebar * 0.05,
-                      lebar * 0.05,
-                      lebar * 0.05,
-                      0,
-                    ),
-                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                    decoration: BoxDecoration(
-                      color: cGrey2,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Center(
-                      child: TextFormField(
-                        decoration: InputDecoration.collapsed(
-                          hintText: 'Name',
-                          hintStyle: tGrey.copyWith(
-                            fontWeight: regular,
-                          ),
-                        ),
+              ),
+              Container(
+                height: 42,
+                width: lebar,
+                margin: EdgeInsets.symmetric(
+                  horizontal: lebar * 0.05,
+                ),
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                decoration: BoxDecoration(
+                  color: cGrey2,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Center(
+                  child: TextFormField(
+                    obscureText: true,
+                    decoration: InputDecoration.collapsed(
+                      hintText: 'Password',
+                      hintStyle: tGrey.copyWith(
+                        fontWeight: regular,
                       ),
                     ),
                   ),
-            Container(
-              height: 42,
-              width: lebar,
-              margin: EdgeInsets.symmetric(
-                horizontal: lebar * 0.05,
-                vertical: lebar * 0.05,
-              ),
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              decoration: BoxDecoration(
-                color: cGrey2,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Center(
-                child: TextFormField(
-                  decoration: InputDecoration.collapsed(
-                    hintText: 'Email adress',
-                    hintStyle: tGrey.copyWith(
-                      fontWeight: regular,
-                    ),
-                  ),
                 ),
               ),
-            ),
-            Container(
-              height: 42,
-              width: lebar,
-              margin: EdgeInsets.symmetric(
-                horizontal: lebar * 0.05,
-              ),
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              decoration: BoxDecoration(
-                color: cGrey2,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Center(
-                child: TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration.collapsed(
-                    hintText: 'Password',
-                    hintStyle: tGrey.copyWith(
-                      fontWeight: regular,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            isLogin ? btnLogin() : btnRegister(),
-          ],
+              isLogin ? btnLogin() : btnRegister(),
+            ],
+          ),
         ),
       );
     }

@@ -61,7 +61,7 @@ class CardFoodWidget extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             Text(
-              '${foodModel.desc}🔥',
+              '${foodModel.include}🔥',
               style: tGrey.copyWith(
                 fontWeight: medium,
                 fontSize: 16,

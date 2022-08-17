@@ -37,6 +37,22 @@ dependencies:
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
   lottie: ^1.3.0
+  flutter_launcher_icons: ^0.10.0
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/vector_burger.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/images/vector_burger.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/images/vector_burger.png"
+    icon_size: 48 # min:48, max:256, default: 48
 
 dev_dependencies:
   flutter_test:

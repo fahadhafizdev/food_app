@@ -25,14 +25,12 @@ class ButtonSosmed extends StatelessWidget {
                   ),
                   Image.asset(
                     'assets/icons/icon_google.png',
-                    height: 25,
+                    height: 20,
                   ),
                   const SizedBox(width: 11),
                   Text(
                     'Google',
-                    style: tGrey.copyWith(
-                      fontWeight: bold,
-                    ),
+                    style: tGrey.copyWith(fontWeight: bold, fontSize: 13),
                   ),
                 ],
               ),
@@ -56,13 +54,14 @@ class ButtonSosmed extends StatelessWidget {
                   ),
                   Image.asset(
                     'assets/icons/icon_fb.png',
-                    height: 25,
+                    height: 20,
                   ),
                   const SizedBox(width: 11),
                   Text(
                     'Facebook',
                     style: tGrey.copyWith(
                       fontWeight: bold,
+                      fontSize: 13,
                     ),
                   ),
                 ],
