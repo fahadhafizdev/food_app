@@ -52,7 +52,9 @@ class MainPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<PageCubit>().setStatus(0);
+                  },
                   backgroundColor: cBlackBold,
                   child: Image.asset(
                     'assets/icons/icon_home.png',
@@ -61,7 +63,9 @@ class MainPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<PageCubit>().setStatus(1);
+                  },
                   backgroundColor: cBlackBold,
                   child: Image.asset(
                     'assets/icons/icon_disc.png',
@@ -70,7 +74,9 @@ class MainPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<PageCubit>().setStatus(2);
+                  },
                   backgroundColor: cBlackBold,
                   child: Image.asset(
                     'assets/icons/icon_keranjang.png',
@@ -79,7 +85,9 @@ class MainPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<PageCubit>().setStatus(3);
+                  },
                   backgroundColor: cBlackBold,
                   child: Image.asset(
                     'assets/icons/icon_user.png',
