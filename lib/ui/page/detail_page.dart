@@ -458,7 +458,6 @@ class DetailPage extends StatelessWidget {
                 const SizedBox(height: 30),
                 Stack(
                   children: [
-                    sizeFood(),
                     Align(
                       alignment: Alignment.center,
                       child: Container(
@@ -471,6 +470,7 @@ class DetailPage extends StatelessWidget {
                         ),
                       ),
                     ),
+                    sizeFood(),
                   ],
                 ),
                 const SizedBox(height: 30),
