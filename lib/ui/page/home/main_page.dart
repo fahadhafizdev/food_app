@@ -16,7 +16,7 @@ class MainPage extends StatelessWidget {
     Future<void> showDialogComing() async {
       return showDialog(
         context: context,
-        builder: (BuildContext context) => DialogComingWidget(),
+        builder: (BuildContext context) => const DialogComingWidget(),
       );
     }
 
@@ -50,7 +50,7 @@ class MainPage extends StatelessWidget {
                     height: 25,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 FloatingActionButton(
                   onPressed: () {},
                   backgroundColor: cBlackBold,
@@ -59,7 +59,7 @@ class MainPage extends StatelessWidget {
                     height: 25,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 FloatingActionButton(
                   onPressed: () {},
                   backgroundColor: cBlackBold,
@@ -68,7 +68,7 @@ class MainPage extends StatelessWidget {
                     height: 25,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 FloatingActionButton(
                   onPressed: () {},
                   backgroundColor: cBlackBold,
@@ -77,7 +77,7 @@ class MainPage extends StatelessWidget {
                     height: 25,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 FloatingActionButton(
                   onPressed: () {},
                   backgroundColor: cBlackBold,
@@ -108,7 +108,6 @@ class MainPage extends StatelessWidget {
                     child: BottomNavigationBar(
                       currentIndex: 0, //index
                       onTap: (value) {
-                        print(value);
                         context.read<PageCubit>().setStatus(value);
                       },
                       backgroundColor: cBlackBold,
@@ -178,7 +177,7 @@ class MainPage extends StatelessWidget {
                     ),
                   ),
                 )
-              : SizedBox();
+              : const SizedBox();
         },
       );
     }
@@ -186,15 +185,15 @@ class MainPage extends StatelessWidget {
     Widget content(int value) {
       switch (value) {
         case 0:
-          return HomePage();
+          return const HomePage();
         case 1:
-          return VoucherPage();
+          return const VoucherPage();
         case 2:
-          return BasketPage();
+          return const BasketPage();
         case 3:
-          return ProfilePage();
+          return const ProfilePage();
         default:
-          return HomePage();
+          return const HomePage();
       }
     }
 

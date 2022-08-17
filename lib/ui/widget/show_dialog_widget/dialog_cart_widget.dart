@@ -11,7 +11,7 @@ class DialogCartWidget extends StatelessWidget {
     Future<void> showDialogSuccess() async {
       return showDialog(
         context: context,
-        builder: (BuildContext context) => DialogSuccessWidget(),
+        builder: (BuildContext context) => const DialogSuccessWidget(),
       );
     }
 
