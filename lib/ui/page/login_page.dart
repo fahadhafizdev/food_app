@@ -14,7 +14,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     Widget btnLogin() {
-      //note
       return Container(
         height: 42,
         width: lebar,

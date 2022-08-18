@@ -6,9 +6,10 @@ import 'package:food_app/cubit/list_item_cubit.dart';
 import 'package:food_app/cubit/love_cubit.dart';
 import 'package:food_app/cubit/page_cubit.dart';
 import 'package:food_app/cubit/size_food_cubit.dart';
+import 'package:food_app/cubit/splash_screen_cubit.dart';
+import 'package:food_app/shared/navigator_key.dart';
 import 'package:food_app/ui/page/home/home_page.dart';
 import 'package:food_app/ui/page/home/main_page.dart';
-
 import 'package:food_app/ui/page/login_page.dart';
 import 'package:food_app/ui/page/splashscreen_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,17 +38,21 @@ class MyApp extends StatelessWidget {
           create: (context) => LoveCubit(),
         ),
         BlocProvider(
-          create: (context) => ListItemCubit(),
+          create: (context) => ListItemCubit()..setList(),
         ),
         BlocProvider(
-          create: (context) => ListCategoryCubit(),
+          create: (context) => ListCategoryCubit()..setList(),
         ),
         BlocProvider(
           create: (context) => PageCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SplashScreenCubit()..timer(),
         )
       ],
       child: MaterialApp(
         title: 'Food App',
+        navigatorKey: NavigatorKey.navigatorKey,
         debugShowCheckedModeBanner: false,
         routes: {
           '/': (context) => const SplashScreenPage(),
